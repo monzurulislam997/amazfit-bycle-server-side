@@ -50,7 +50,12 @@ async function run() {
         })
 
 
-
+        //Add item
+        app.post('/products', async (req, res) => {
+            const newProducts = req.body;
+            const result = await bicycleCollection.insertOne(newProducts);
+            res.send(result)
+        })
 
         //Delete one item
         app.delete('/products/:id', async (req, res) => {
